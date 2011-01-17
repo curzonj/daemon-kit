@@ -91,7 +91,7 @@ module DaemonKit
 
       def reply_via_amqp( response )
         DaemonKit.logger.debug("Replying to engine via AMQP with #{response.inspect}")
-        ::MQ.queue( response['params']['reply_queue'] ).publish( response.to_json )
+        ::MQ.queue( response['params']['participant_options']['reply_queue'] ).publish( response.to_json )
 
         response
       end

@@ -114,6 +114,9 @@ module DaemonKit
       @api_key = nil
       attr_accessor :api_key
 
+      @url = nil
+      attr_writer :url
+
       def handle_exception( exception )
         headers = {
           'Content-type' => 'text/xml',
@@ -139,7 +142,7 @@ module DaemonKit
       end
 
       def url
-        URI.parse("http://hoptoadapp.com/notifier_api/v2/notices")
+        URI.parse(@url || "http://hoptoadapp.com/notifier_api/v2/notices")
       end
 
       def format_exception( exception )
